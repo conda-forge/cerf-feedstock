@@ -1,5 +1,5 @@
 {% set name = "cerf" %}
-{% set version = "1.16" %}
+{% set version = "2.1" %}
 
 package:
   name: {{ name }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://jugit.fz-juelich.de/mlz/libcerf/-/archive/v{{ version }}/libcerf-v{{ version }}.tar.gz
-  sha256: f24cfe72716e008ebe94376e2fb08cf9f6d982a430e0688e2f1af82da51e6d2d
+  sha256: 8a1cd8b7fae04b82a95168252129b8c1baca098a285ff8d3f25781dead14b75a
 
 
 build:
   number: 0
-  skip: True  # [win]
+  skip: true  # [win]
 
 requirements:
   build:
@@ -28,7 +28,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE.txt
-  summary: 'A self-contained numeric library that provides an efficient and accurate implementation of complex error functions, along with Dawson, Faddeeva, and Voigt functions.'
+  summary: A self-contained numeric library that provides an efficient and accurate implementation of complex error functions, along with Dawson, Faddeeva, and Voigt functions.
 
 extra:
   recipe-maintainers:
