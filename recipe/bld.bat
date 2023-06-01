@@ -10,7 +10,6 @@ cmake %CMAKE_ARGS% ^
   -D CMAKE_INSTALL_LIBDIR="Library\lib" ^
   -D CMAKE_INSTALL_INCLUDEDIR="Library\include" ^
   -D CMAKE_INSTALL_BINDIR="Library\bin" ^
-  -D cerf_INSTALL_CMAKEDIR="Library\lib\cmake\cerf" ^
   -D BUILD_SHARED_LIBS=ON ^
   -D CERF_CPP=ON ^
   -D LIB_MAN=OFF ^
