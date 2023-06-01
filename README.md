@@ -1,13 +1,15 @@
-About cerf
-==========
-
-Home: https://jugit.fz-juelich.de/mlz/libcerf
-
-Package license: MIT
+About cerf-feedstock
+====================
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cerf-feedstock/blob/main/LICENSE.txt)
 
+Home: https://jugit.fz-juelich.de/mlz/libcerf
+
+Package license: [MIT](https://opensource.org/license/mit/)
+
 Summary: A self-contained numeric library that provides an efficient and accurate implementation of complex error functions, along with Dawson, Faddeeva, and Voigt functions.
+
+Development: https://jugit.fz-juelich.de/mlz/libcerf
 
 Current build status
 ====================
@@ -38,6 +40,13 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=13232&branchName=main">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/cerf-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=13232&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/cerf-feedstock?branchName=main&jobName=win&configuration=win%20win_64_" alt="variant">
                 </a>
               </td>
             </tr>
