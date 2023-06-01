@@ -34,10 +34,10 @@ test:
     - if not exist %PREFIX%\\Library\\bin\\cerf.dll exit 1                # [win]   # gnu/ms dyn lib
     # Verify accessories
     - test -f $PREFIX/include/cerf.h                                      # [unix]
-    - test -f $PREFIX/share/cmake/cerf/cerfConfig.cmake                   # [unix]
+    - test -f $PREFIX/lib/cmake/cerf/cerfConfig.cmake                     # [unix]
     - test -f $PREFIX/lib/pkgconfig/libcerf.pc                            # [unix]
     - if not exist %PREFIX%\\Library\\include\\cerf.h exit 1              # [win]
-    - if not exist %PREFIX%\\Library\\share\\cmake\\cerf\\cerfConfig.cmake exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\lib\\cmake\\cerf\\cerfConfig.cmake exit 1  # [win]
     - if exist %PREFIX%\\Library\\lib\\pkgconfig\\libcerf.pc exit 1       # [win]
     # Inspect linkage
     - ldd -v $PREFIX/lib/libcerf$SHLIB_EXT                                # [linux and build_platform == target_platform]

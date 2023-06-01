@@ -8,14 +8,14 @@ cmake %CMAKE_ARGS% ^
   -D CMAKE_C_COMPILER=clang-cl ^
   -D CMAKE_C_FLAGS="/EHsc %CFLAGS%" ^
   -D CMAKE_CXX_COMPILER=clang-cl ^
-  -D CMAKE_CXX_FLAGS="/EHsc -Xclang -fopenmp %CXXFLAGS%" ^
+  -D CMAKE_CXX_FLAGS="/EHsc %CXXFLAGS%" ^
   -D CMAKE_INSTALL_LIBDIR="Library\lib" ^
   -D CMAKE_INSTALL_INCLUDEDIR="Library\include" ^
   -D CMAKE_INSTALL_BINDIR="Library\bin" ^
-  -D CMAKE_INSTALL_DATADIR="Library\share" ^
-  -D cerf_INSTALL_CMAKEDIR="Library\share\cmake\cerf" ^
+  -D cerf_INSTALL_CMAKEDIR="Library\lib\cmake\cerf" ^
   -D BUILD_SHARED_LIBS=ON ^
   -D CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=ON ^
+  -D CERF_CPP=ON ^
   -D CMAKE_PREFIX_PATH="%LIBRARY_PREFIX%"
 if errorlevel 1 exit 1
 
