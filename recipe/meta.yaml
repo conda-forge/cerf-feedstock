@@ -1,34 +1,56 @@
 {% set name = "cerf" %}
 {% set version = "2.3" %}
+{% set sha256 = "cdc78b5008e171952bb6dd54c1144da7c540c8330e1effbfd9e26e3f4857afd7" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://jugit.fz-juelich.de/mlz/libcerf/-/archive/v{{ version }}/libcerf-v{{ version }}.tar.gz
-  sha256: cceefee46e84ce88d075103390b4f9d04c34e4bc3b96d733292c36836d4f7065
-
+  url: https://github.com/loriab/libcerf/archive/windows2023.tar.gz
+  sha256: {{ sha256 }}
+#  url: https://jugit.fz-juelich.de/mlz/libcerf/-/archive/v{{ version }}/libcerf-v{{ version }}.tar.gz
+#  sha256: cceefee46e84ce88d075103390b4f9d04c34e4bc3b96d733292c36836d4f7065
 
 build:
   number: 0
-  skip: true  # [win]
+  run_exports:
+    - {{ pin_subpackage('cerf', max_pin='x.x') }}
 
 requirements:
   build:
-    - cmake
-    - make
     - {{ compiler('c') }}
+    - cmake
+    - ninja
 
 test:
+  requires:
+    - m2w64-binutils                                                      # [win]   # provides objdump.exe
   commands:
-    - test -f "$PREFIX/lib/libcerf${SHLIB_EXT}"  # [unix]
+    # Verify library
+    - test -L $PREFIX/lib/libcerf$SHLIB_EXT                               # [unix]
+    - test ! -f $PREFIX/lib/libcerf.a                                     # [unix]
+    - if not exist %PREFIX%\\Library\\lib\\cerf.lib exit 1                # [win]   # ms import lib
+    - if not exist %PREFIX%\\Library\\bin\\cerf.dll exit 1                # [win]   # gnu/ms dyn lib
+    # Verify accessories
+    - test -f $PREFIX/include/cerf.h                                      # [unix]
+    - test -f $PREFIX/share/cmake/cerf/cerfConfig.cmake                   # [unix]
+    - test -f $PREFIX/lib/pkgconfig/libcerf.pc                            # [unix]
+    - if not exist %PREFIX%\\Library\\include\\cerf.h exit 1              # [win]
+    - if not exist %PREFIX%\\Library\\share\\cmake\\cerf\\cerfConfig.cmake exit 1  # [win]
+    - if exist %PREFIX%\\Library\\lib\\pkgconfig\\libcerf.pc exit 1       # [win]
+    # Inspect linkage
+    - ldd -v $PREFIX/lib/libcerf$SHLIB_EXT                                # [linux and build_platform == target_platform]
+    - otool -L $PREFIX/lib/libcerf$SHLIB_EXT                              # [osx]
+    - objdump.exe -p %PREFIX%\\Library\\bin\\cerf.dll | findstr /i "dll"  # [win]
 
 about:
   home: https://jugit.fz-juelich.de/mlz/libcerf
+  dev_url: https://jugit.fz-juelich.de/mlz/libcerf
   license: MIT
-  license_family: MIT
+  license_url: https://opensource.org/license/mit/
   license_file: LICENSE.txt
+  license_family: MIT
   summary: A self-contained numeric library that provides an efficient and accurate implementation of complex error functions, along with Dawson, Faddeeva, and Voigt functions.
 
 extra:
