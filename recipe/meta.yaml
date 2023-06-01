@@ -1,6 +1,6 @@
 {% set name = "cerf" %}
 {% set version = "2.3" %}
-{% set sha256 = "cdc78b5008e171952bb6dd54c1144da7c540c8330e1effbfd9e26e3f4857afd7" %}
+{% set sha256 = "b2c2c4b4077f3266423971d576f2dbbc281c823ad7b354001ad2c6c5d653fd69" %}
 
 package:
   name: {{ name }}
@@ -13,13 +13,17 @@ source:
 #  sha256: cceefee46e84ce88d075103390b4f9d04c34e4bc3b96d733292c36836d4f7065
 
 build:
-  number: 0
+  number: 1
+#  skip: true  # [win]
   run_exports:
     - {{ pin_subpackage('cerf', max_pin='x.x') }}
 
 requirements:
   build:
-    - {{ compiler('c') }}
+    - python                                                              # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}                                  # [build_platform != target_platform]
+    - {{ compiler('c') }}                                                 # [unix]
+    - {{ compiler('cxx') }}                                               # [win]
     - cmake
     - ninja
 
@@ -30,8 +34,8 @@ test:
     # Verify library
     - test -L $PREFIX/lib/libcerf$SHLIB_EXT                               # [unix]
     - test ! -f $PREFIX/lib/libcerf.a                                     # [unix]
-    - if not exist %PREFIX%\\Library\\lib\\cerf.lib exit 1                # [win]   # ms import lib
-    - if not exist %PREFIX%\\Library\\bin\\cerf.dll exit 1                # [win]   # gnu/ms dyn lib
+    - if not exist %PREFIX%\\Library\\lib\\cerfcpp.lib exit 1             # [win]   # ms import lib
+    - if not exist %PREFIX%\\Library\\bin\\cerfcpp.dll exit 1             # [win]   # gnu/ms dyn lib
     # Verify accessories
     - test -f $PREFIX/include/cerf.h                                      # [unix]
     - test -f $PREFIX/lib/cmake/cerf/cerfConfig.cmake                     # [unix]
