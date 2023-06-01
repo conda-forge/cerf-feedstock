@@ -1,16 +1,16 @@
 {% set name = "cerf" %}
 {% set version = "2.3" %}
-{% set sha256 = "b2c2c4b4077f3266423971d576f2dbbc281c823ad7b354001ad2c6c5d653fd69" %}
+{% set sha256 = "cceefee46e84ce88d075103390b4f9d04c34e4bc3b96d733292c36836d4f7065" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://github.com/loriab/libcerf/archive/windows2023.tar.gz
+  url: https://jugit.fz-juelich.de/mlz/libcerf/-/archive/v{{ version }}/libcerf-v{{ version }}.tar.gz
+  patches:
+    - 0001-win-dll-to-bin-no-pkgconfig.patch
   sha256: {{ sha256 }}
-#  url: https://jugit.fz-juelich.de/mlz/libcerf/-/archive/v{{ version }}/libcerf-v{{ version }}.tar.gz
-#  sha256: cceefee46e84ce88d075103390b4f9d04c34e4bc3b96d733292c36836d4f7065
 
 build:
   number: 1
