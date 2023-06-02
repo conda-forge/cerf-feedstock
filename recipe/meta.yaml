@@ -9,7 +9,7 @@ package:
 source:
   url: https://jugit.fz-juelich.de/mlz/libcerf/-/archive/v{{ version }}/libcerf-v{{ version }}.tar.gz
   patches:
-    - 0001-win-dll-to-bin-no-pkgconfig.patch
+    - 0001-correct-runtime-destination-bindir.patch
   sha256: {{ sha256 }}
 
 build:
@@ -41,7 +41,7 @@ test:
     - test -f $PREFIX/lib/pkgconfig/libcerf.pc                                   # [unix]
     - if not exist %PREFIX%\\Library\\include\\cerf.h exit 1                     # [win]
     - if not exist %PREFIX%\\Library\\lib\\cmake\\cerf\\cerfConfig.cmake exit 1  # [win]
-    - if exist %PREFIX%\\Library\\lib\\pkgconfig\\libcerf.pc exit 1              # [win]
+    - if not exist %PREFIX%\\Library\\lib\\pkgconfig\\libcerf.pc exit 1          # [win]
     # Inspect linkage
     - ldd -v $PREFIX/lib/libcerf$SHLIB_EXT                                       # [linux and build_platform == target_platform]
     - otool -L $PREFIX/lib/libcerf$SHLIB_EXT                                     # [osx]

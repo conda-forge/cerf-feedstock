@@ -1,0 +1,40 @@
+From 49c44c3ea1398b3a6c484b656d36460cdd4682a3 Mon Sep 17 00:00:00 2001
+From: "Joachim Wuttke (h)" <j.wuttke@fz-juelich.de>
+Date: Fri, 2 Jun 2023 11:53:15 +0200
+Subject: [PATCH] correct runtime destination -> ...BINDIR
+
+---
+ CHANGELOG          | 3 +++
+ lib/CMakeLists.txt | 2 +-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/CHANGELOG b/CHANGELOG
+index ab276eb..27abc58 100644
+--- a/CHANGELOG
++++ b/CHANGELOG
+@@ -1,5 +1,8 @@
+ == Revision history of libcerf, maintained by Joachim Wuttke ==
+ 
++libcerf-2.4, release date not yet set:
++  - CMake runtime destination corrected (bin, not lib)
++
+ libcerf-2.3, released 10jan23:
+   - Fix compiler flags; use -O3 for Release
+     - Introduce CERF_COMPILE_OPTIONS to let users overwrite the hard-coded compile options
+diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
+index 8ffe6fb..e69a984 100644
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -38,8 +38,8 @@ target_include_directories(${lib} INTERFACE
+ install(
+     TARGETS ${lib}
+     EXPORT ${intf}
++    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-    RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
+     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+     COMPONENT Libraries)
+ install(
+-- 
+2.34.1
+
