@@ -1,11 +1,11 @@
-About cerf
-==========
+About cerf-feedstock
+====================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cerf-feedstock/blob/main/LICENSE.txt)
 
 Home: https://jugit.fz-juelich.de/mlz/libcerf
 
 Package license: MIT
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cerf-feedstock/blob/main/LICENSE.txt)
 
 Summary: A self-contained numeric library that provides an efficient and accurate implementation of complex error functions, along with Dawson, Faddeeva, and Voigt functions.
 
