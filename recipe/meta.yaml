@@ -1,5 +1,5 @@
 {% set name = "cerf" %}
-{% set version = "2.4" %}
+{% set version = "3.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://jugit.fz-juelich.de/mlz/libcerf/-/archive/v{{ version }}/libcerf-v{{ version }}.tar.gz
-  sha256: 080b30ae564c3dabe3b89264522adaf5647ec754021572bee54929697b276cdc
+  sha256: c6108fbda89af37f588119c0c542b6c1e824845a36bea2fa31f7ed2cc1a246db
 
 
 build:
@@ -19,6 +19,7 @@ requirements:
     - cmake
     - make
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
 
 test:
   commands:
