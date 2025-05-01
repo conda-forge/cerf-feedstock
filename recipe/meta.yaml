@@ -1,5 +1,5 @@
 {% set name = "cerf" %}
-{% set version = "2.4" %}
+{% set version = "3.0" %}
 
 package:
   name: {{ name }}
@@ -19,6 +19,7 @@ requirements:
     - cmake
     - make
     - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
 
 test:
   commands:
