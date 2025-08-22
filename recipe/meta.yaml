@@ -1,5 +1,5 @@
 {% set name = "cerf" %}
-{% set version = "3.1" %}
+{% set version = "3.2" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://jugit.fz-juelich.de/mlz/libcerf/-/archive/v{{ version }}/libcerf-v{{ version }}.tar.gz
-  sha256: 4c07e2a8e2b4d0e4d48db9e0fc9191b43a0e120e577d55d87e26dee8745c6fab
+  sha256: ea8d110d73ec24a643042ca3940461ccbb1b6541e21310ecb70ab4e4dc144aef
 
 
 build:
